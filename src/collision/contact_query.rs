@@ -226,6 +226,11 @@ pub fn contact_manifolds(
                 .normalize()
                 .into();
 
+            // Make sure there is actually contact
+            if manifold.points.is_empty() {
+                return None;
+            }
+
             // Make sure normals are valid
             if !normal1.is_normalized() || !normal2.is_normalized() {
                 return None;
